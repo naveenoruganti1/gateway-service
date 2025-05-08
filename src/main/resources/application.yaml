@@ -7,25 +7,34 @@ spring:
 
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
       routes:
         - id: json-service
-          uri: http://localhost:8081
+          uri: lb://json-service
           predicates:
             - Path=/api/json/**
           filters:
             - StripPrefix=2
 
         - id: xml-service
-          uri: http://localhost:8082
+          uri: lb://xml-service
           predicates:
             - Path=/api/xml/**
           filters:
             - StripPrefix=2
 
         - id: yaml-service
-          uri: http://localhost:8083
+          uri: lb://yaml-service
           predicates:
             - Path=/api/yaml/**
           filters:
             - StripPrefix=2
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
