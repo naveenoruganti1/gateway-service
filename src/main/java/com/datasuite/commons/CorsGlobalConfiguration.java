@@ -16,7 +16,7 @@ public class CorsGlobalConfiguration {
     	System.out.println("Intialized................");
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:3000")); // Only ONCE
+        config.setAllowedOrigins(List.of("http://localhost")); // Only ONCE
         config.setAllowedHeaders(List.of("*"));
         config.setAllowedMethods(List.of("POST"));
 
